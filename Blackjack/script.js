@@ -12,6 +12,7 @@ let deck;
 window.onload = function() {
     buildDeck()
     shuffleDeck()
+    startGame()
 }
 
 function buildDeck() {
@@ -38,4 +39,47 @@ function shuffleDeck(){
     }
 
     console.log(deck)
+}
+
+
+function startGame() {
+    hidden = deck.pop()
+    dealerSum += getValue(hidden)
+    dealerAceCount += checkAce(hidden)
+    // console.log(hidden)
+    // console.log(dealerSum)
+
+    while (dealerSum < 17) {
+        let cardImg = document.createElement("img")
+        let card = deck.pop()
+        cardImg.src = "./cards/" + card + ".png"
+        dealerSum += getValue(card)
+        dealerAceCount += checkAce(card)
+        document.getElementById("dealer-cards").append(cardImg)
+    }
+
+    console.log(dealerSum)
+
+}
+
+
+function getValue(card) {
+    let data = card.split("-")
+    let value = data[0]
+
+    if (isNaN(value)) {
+        if (value == "A") {
+            return 11
+        }
+        return 10
+    }
+
+    return parseInt(value)
+}
+
+
+function checkAce(card) {
+    if (card[0] == "A") {
+        return 0
+    } 
 }
