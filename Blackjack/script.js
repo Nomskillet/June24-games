@@ -75,6 +75,7 @@ function startGame() {
 
     console.log(yourSum)
     document.getElementById("hit").addEventListener("click", hit)
+    document.getElementById("stay").addEventListener("click", stay);
 
 }
 
@@ -88,6 +89,48 @@ function hit() {
     yourSum += getValue(card)
     yourAceCount += checkAce(card)
     document.getElementById("your-cards").append(cardImg)
+
+    // if (reduceAce(yourSum, yourAceCount) > 21) {
+    //     canHit = false
+    // }
+
+    if (reduceAce(yourSum, yourAceCount) > 21) { //A, J, 8 -> 1 + 10 + 8
+        canHit = false;
+    }
+}
+
+
+function stay() {
+    dealerSum = reduceAce(dealerSum, dealerAceCount)
+    yourSum = reduceAce(yourSum, yourAceCount)
+
+    canHit = false
+    document.getElementById("hidden").src + "./cards/" + hidden + ".png"
+
+
+    let message = ""
+    if (yourSum > 21) {
+        message = "You Lose!"
+    }
+    else if (dealerSum > 21) {
+        message = "You Win!"
+    }
+
+    else if (yourSum == dealerSum) {
+        message = "Tie"
+    }
+
+    else if (yourSum > dealerSum) {
+        message = "You Win!"
+    }
+
+    else if (yourSum < dealerSum) {
+        message = "You Lose!"
+    }
+
+    document.getElementById("your-sum").innerText = yourSum
+    document.getElementById("dealer-sunm").innerText = dealerSum
+    document.getElementById("results").innerText = message
 }
 
 
@@ -110,4 +153,14 @@ function checkAce(card) {
     if (card[0] == "A") {
         return 0
     } 
+}
+
+
+
+function reduceAce(playerSum, playerAceCount) {
+    while (playerSum > 21 && playerAceCount > 0) {
+        playerSum -= 10;
+        playerAceCount -= 1;
+    }
+    return playerSum;
 }
