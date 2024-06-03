@@ -8,6 +8,8 @@ let hidden;
 let deck;
 
 
+let canHit = true
+
 
 window.onload = function() {
     buildDeck()
@@ -60,6 +62,32 @@ function startGame() {
 
     console.log(dealerSum)
 
+    for (let i = 0; i < 2; i++) {
+        
+        let cardImg = document.createElement("img")
+        let card = deck.pop()
+        cardImg.src = "./cards/" + card + ".png"
+        yourSum += getValue(card)
+        yourAceCount += checkAce(card)
+        document.getElementById("your-cards").append(cardImg)
+
+    }
+
+    console.log(yourSum)
+    document.getElementById("hit").addEventListener("click", hit)
+
+}
+
+function hit() {
+    if (!canHit) {
+        return
+    }
+    let cardImg = document.createElement("img")
+    let card = deck.pop()
+    cardImg.src = "./cards/" + card + ".png"
+    yourSum += getValue(card)
+    yourAceCount += checkAce(card)
+    document.getElementById("your-cards").append(cardImg)
 }
 
 
