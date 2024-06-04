@@ -22,6 +22,9 @@ let foodX
 let foodY 
 
 
+let gameOver = false
+
+
 
 window.onload = function() {
     board = document.getElementById("board")
@@ -36,6 +39,11 @@ window.onload = function() {
 }
 
 function update() {
+
+    if (gameOver) {
+        return
+    }
+
     context.fillStyle="black"
     context.fillRect(0, 0, board.width, board.height)
 
@@ -50,6 +58,9 @@ function update() {
     for (let i = snakeBody.length-1; i > 0; i--) {
         snakeBody[i] = snakeBody[i-1]
     }
+    if (snakeBody.length) {
+        snakeBody[0] = [snakeX, snakeY]
+    }
 
     context.fillStyle="lime"
     snakeX += velocityX * blockSize
@@ -59,7 +70,22 @@ function update() {
         context.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize)
     }
 
-   
+   //gameOver conditions
+    if (snakeX < 0 || snakeX > cols * blockSize || snakeY <0 || snakeY > rows * blockSize) {
+        gameOver = true
+        alert("GAME OVER")
+
+    }
+
+
+    for (let i = 0; i < snakeBody.length; i++) {
+        if (snakeX == snakeBody[i][0] && snakeY == snakeBody[i][0]) {
+            gameOver = true
+            alert("GAME OVER")
+        }
+    }
+
+
 }
 
 function changeDirection(e){
