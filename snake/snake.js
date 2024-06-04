@@ -12,6 +12,8 @@ let context
 let snakeX = blockSize * 5
 let snakeY = blockSize * 5
 
+let velocityX = 0
+let VelocityY = 0
 
 //food
 let foodX 
@@ -26,7 +28,9 @@ window.onload = function() {
     context = board.getContext("2d") //used nfor drawing on the board
 
     placeFood()
-    update()
+    document.addEventListener("keyup", changeDirection)
+    // update()
+    setInterval(update, 1000/10)
 }
 
 function update() {
@@ -34,10 +38,31 @@ function update() {
     context.fillRect(0, 0, board.width, board.height)
 
     context.fillStyle="lime"
+    snakeX += velocityX
+    snakeY += VelocityY
     context.fillRect(snakeX, snakeY, blockSize, blockSize)
 
     context.fillStyle="Red"
     context.fillRect(foodX, foodY, blockSize, blockSize)
+}
+
+function changeDirection(e){
+    if (e.code == "ArrowUp") {
+        velocityX = 0
+        VelocityY = -1
+    }
+    else if (e.code == "ArrowDown") {
+        velocityX = 0
+        VelocityY = 1
+    }
+    else if (e.code == "ArrowLeft") {
+        velocityX = -1
+        VelocityY =  0
+    }
+    else if (e.code == "ArrowRight") {
+        velocityX = 1
+        VelocityY = 0
+    }
 }
 
 
