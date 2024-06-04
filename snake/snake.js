@@ -14,8 +14,8 @@ let snakeY = blockSize * 5
 
 
 //food
-let foodX = blockSize * 10
-let foodY = blockSize * 10
+let foodX 
+let foodY 
 
 
 
@@ -25,6 +25,7 @@ window.onload = function() {
     board.width = cols * blockSize
     context = board.getContext("2d") //used nfor drawing on the board
 
+    placeFood()
     update()
 }
 
@@ -37,4 +38,10 @@ function update() {
 
     context.fillStyle="Red"
     context.fillRect(foodX, foodY, blockSize, blockSize)
+}
+
+
+function placeFood() {
+    foodX = Math.floor(Math.random() * cols) * blockSize
+    foodY = Math.floor(Math.random() * rows) * blockSize
 }
