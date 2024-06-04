@@ -13,7 +13,9 @@ let snakeX = blockSize * 5
 let snakeY = blockSize * 5
 
 let velocityX = 0
-let VelocityY = 0
+let velocityY = 0
+
+let snakeBody = []
 
 //food
 let foodX 
@@ -37,31 +39,45 @@ function update() {
     context.fillStyle="black"
     context.fillRect(0, 0, board.width, board.height)
 
-    context.fillStyle="lime"
-    snakeX += velocityX
-    snakeY += VelocityY
-    context.fillRect(snakeX, snakeY, blockSize, blockSize)
-
     context.fillStyle="Red"
     context.fillRect(foodX, foodY, blockSize, blockSize)
+
+    if (snakeX == foodX && snakeY == foodY){
+        snakeBody.push([foodX, foodY])
+        placeFood()
+    }
+
+    for (let i = snakeBody.length-1; i > 0; i--) {
+        snakeBody[i] = snakeBody[i-1]
+    }
+
+    context.fillStyle="lime"
+    snakeX += velocityX * blockSize
+    snakeY += velocityY * blockSize
+    context.fillRect(snakeX, snakeY, blockSize, blockSize)
+    for (let i = 0; i < snakeBody.length; i++) {
+        context.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize)
+    }
+
+   
 }
 
 function changeDirection(e){
-    if (e.code == "ArrowUp") {
+    if (e.code == "ArrowUp" && velocityY != 1) {
         velocityX = 0
-        VelocityY = -1
+        velocityY = -1
     }
-    else if (e.code == "ArrowDown") {
+    else if (e.code == "ArrowDown" && velocityY != -1) {
         velocityX = 0
-        VelocityY = 1
+        velocityY = 1
     }
-    else if (e.code == "ArrowLeft") {
+    else if (e.code == "ArrowLeft" && velocityX != 1) {
         velocityX = -1
-        VelocityY =  0
+        velocityY =  0
     }
-    else if (e.code == "ArrowRight") {
+    else if (e.code == "ArrowRight" && velocityX != -1) {
         velocityX = 1
-        VelocityY = 0
+        velocityY = 0
     }
 }
 
