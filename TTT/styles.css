@@ -1,36 +1,38 @@
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
 
-hr{
+hr {
     width: 500px;
-    height: 3px;
+    height: 2px;
     background-color: black;
-
 }
 
 
 #board {
     width: 450px;
     height: 450px;
-/* 
-    background-color: yellow; */
-
-    margin: auto 0;
+    /* background-color: gray; */
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
 }
 
-
 .tile {
     width: 147px;
     height: 147px;
-
+    
+    /* Text */
     font-size: 150px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; 
+    align-items: center;    
+}
+
+.winner {
+    background-color: lightgray;
+    color: red;
 }
 
 
@@ -38,12 +40,6 @@ hr{
     border-bottom: 3px solid black;
 }
 
-
 .vertical-line {
     border-right: 3px solid black;
-}
-
-.winner {
-    background-color: light grey;
-    color: red;
 }
