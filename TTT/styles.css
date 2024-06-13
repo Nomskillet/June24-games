@@ -14,8 +14,8 @@ hr{
 #board {
     width: 450px;
     height: 450px;
-
-    background-color: yellow;
+/* 
+    background-color: yellow; */
 
     margin: auto 0;
     display: flex;
