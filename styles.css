@@ -229,12 +229,12 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #f77f00;
     text-align: center;
 }
 
 header {
-    background-color: #4CAF50;
+    background-color: #003049;
     color: white;
     padding: 20px 0;
     width: 100%;
@@ -260,7 +260,7 @@ h1 {
 }
 
 .game-item {
-    background-color: white;
+    background-color: #d62828;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -270,6 +270,7 @@ h1 {
     text-align: center;
     display: flex;
     flex-direction: column;
+    color: white;
 }
 
 .game-item img {
@@ -281,7 +282,7 @@ h1 {
 
 .game-item a {
     display: block;
-    background-color: #4CAF50;
+    background-color: #003049;
     color: white;
     text-decoration: none;
     font-size: 1.2em;
@@ -290,7 +291,7 @@ h1 {
 }
 
 .game-item a:hover {
-    background-color: #45a049;
+    background-color: #d62828;
 }
 
 .game-item span {
@@ -304,7 +305,7 @@ h1 {
 }
 
 footer {
-    background-color: #4CAF50;
+    background-color: #003049;
     color: white;
     padding: 10px 0;
     width: 100%;
