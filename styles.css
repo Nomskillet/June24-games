@@ -5,15 +5,15 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: url('forest-background.jpg') no-repeat center center fixed; /* Add a realistic forest background */
+    background: url('forest-background.jpg') no-repeat center center fixed; /* Forest background */
     background-size: cover;
     text-align: center;
-    color: #f4f4f4; /* Off-white text for better readability */
+    color: #f4f4f4; /* Off-white text */
 }
 
 header {
     background-color: #2a3b2e; /* Deep forest green */
-    color: #f1e9c9; /* Light beige for a softer touch */
+    color: #f1e9c9; /* Light beige */
     padding: 20px 0;
     width: 100%;
     text-align: center;
@@ -23,7 +23,7 @@ header {
 h1 {
     margin: 0;
     font-size: 2.5em;
-    font-family: 'Cinzel', serif; /* Add an elegant font */
+    font-family: 'Cinzel', serif; /* Elegant font */
     letter-spacing: 1px;
 }
 
@@ -58,7 +58,7 @@ h1 {
     height: 200px;
     object-fit: cover;
     display: block;
-    border-bottom: 2px solid #a35638; /* Add a rustic red divider */
+    border-bottom: 2px solid #a35638; /* Rustic red divider */
 }
 
 .game-item a {
@@ -103,3 +103,46 @@ footer {
     filter: brightness(1.2);
     transition: filter 0.3s ease-in-out;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .game-item {
+        width: calc(50% - 20px); /* Adjust to 2 items per row */
+    }
+
+    .game-item img {
+        height: 150px; /* Reduce image height */
+    }
+
+    .game-item span {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-item {
+        width: 100%; /* Adjust to 1 item per row */
+        margin: 10px 0;
+    }
+
+    .game-item img {
+        height: 120px; /* Reduce image height further */
+    }
+
+    .game-item span {
+        font-size: 0.9em;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    footer {
+        font-size: 0.9em;
+    }
+}
+
